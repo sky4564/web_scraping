@@ -1,6 +1,3 @@
-from email.mime import base
-from re import search
-from tkinter import N
 from requests import get
 from bs4 import BeautifulSoup
 
