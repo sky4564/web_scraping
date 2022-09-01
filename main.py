@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 
 
 base_url = 'https://weworkremotely.com/remote-jobs/search?term='
-search_item = 'python'
+search_item = 'java'
+results = []
 
 app_info ={
   'maker' : 'sky4564',
@@ -35,11 +36,22 @@ if response.status_code == 200:
       anchor = anchors[1]
       company, kind, region = anchor.find_all('span', class_= 'company')
       title = anchor.find('span', class_= 'title')
-      print(title)
-      print(kind)
-      print(company.string, kind.string, region.string, title.string)            
+
+      job_data = {
+        'title' : title.string,
+        'company' : company.string,
+        'kind' : kind.string,
+        'region' : region.string        
+      }
+      results.append(job_data)
       print('////////////////////////////')
       print('fin////////////////////////////')
-# else:
-  # print(f'this error : {response.status_code}')
+  
+  for result in results:
+    print(result)
+    print('/////////////////////////////')
+    print('/////////////////////////////')
+
+else:
+  print(f'this error : {response.status_code}')
   
