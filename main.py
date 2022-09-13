@@ -1,9 +1,30 @@
-from extractors.wwr import extract_wwr_jobs
-from extractors.file import save_to_file
+from flask import Flask
 
-keyword = 'react'
+app = Flask('job scrapper')
 
-jobs = extract_wwr_jobs(keyword)
+@app.route("/")
+def home():
+    return 'hi there'
+    
 
-save_to_file(keyword, jobs)
+app.run("0.0.0.0")
+    
+    
 
+
+
+
+
+
+
+
+# from extractors.wwr import extract_wwr_jobs
+# from extractors.file import save_to_file
+
+# keyword = input("what do u want search ???")
+
+# jobs = extract_wwr_jobs(keyword)
+
+# save_to_file(keyword, jobs)
+
+ 
