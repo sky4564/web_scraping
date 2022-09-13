@@ -1,4 +1,9 @@
 from extractors.wwr import extract_wwr_jobs
+from extractors.file import save_to_file
 
-jobs = extract_wwr_jobs('python')
-print(jobs)
+keyword = 'react'
+
+jobs = extract_wwr_jobs(keyword)
+
+save_to_file(keyword, jobs)
+
