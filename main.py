@@ -1,15 +1,22 @@
-from flask import Flask
-from flask import render_template
+from ast import keyword
+from flask import Flask, render_template, request
+
+
 
 app = Flask('job scrapper')
 
 @app.route("/")
 def home():
-    return "hello world"
+    return "hello world" 
 
 @app.route("/hello")
 def hello():
     return render_template("home.html", name = "kaki")
+
+@app.route("/search")
+def search():
+    keyword = request.args.get("keyword")
+    return render_template("search.html", search_item = keyword)
 
 app.run("0.0.0.0")
 
