@@ -1,4 +1,6 @@
-from ast import keyword
+from extractors.wwr import extract_wwr_jobs
+from extractors.file import save_to_file
+
 from flask import Flask, render_template, request
 
 
@@ -16,17 +18,16 @@ def hello():
 @app.route("/search")
 def search():
     keyword = request.args.get("keyword")
-    return render_template("search.html", search_item = keyword)
+    jobs = extract_wwr_jobs(keyword)
+    save_to_file(keyword, jobs)
+    
+    return render_template("search.html", keyword = keyword, jobs = jobs)
 
 app.run("0.0.0.0")
 
-# from extractors.wwr import extract_wwr_jobs
-# from extractors.file import save_to_file
 
 # keyword = input("what do u want search ???")
 
-# jobs = extract_wwr_jobs(keyword)
 
-# save_to_file(keyword, jobs)
 
  

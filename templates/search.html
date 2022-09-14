@@ -7,6 +7,16 @@
     <title>job scrapper</title>
 </head>
 <body>
-    <h1>search result : {{search_item}} </h1>    
+    <h1>search result : {{keyword}} </h1>
+    
+    
+    {% for job in jobs %}
+        <div> 
+            <span>{{job['company']}}</span>
+            <span>{{job['title']}}</span>
+            <span>{{job['kind']}}</span>
+            <span>{{job['region']}}</span>
+        </div>
+        {% endfor %}
 </body>
 </html>
